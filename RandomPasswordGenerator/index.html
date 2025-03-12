@@ -58,10 +58,14 @@
             <div class="how-it-works">
                 <h3>🔍 How is the Password Generated?</h3>
                 <p>
-                    I use a combination of your selected character options (uppercase, lowercase, numbers, and special characters) and generate a password based on your selected length.
+                    I use a combination of your selected character options (uppercase, lowercase, numbers, and special
+                    characters) and generate a password based on your selected length.
                 </p>
                 <p>
-                    Rather than just picking random characters, the algorithm develops the seed number via a mathematical operation and assigns values to characters in a predictable yet controlled manner. This guarantees every password is unique, complex, and strong — ideal for today's security requirements. 🔒
+                    Rather than just picking random characters, the algorithm develops the seed number via a
+                    mathematical operation and assigns values to characters in a predictable yet controlled manner. This
+                    guarantees every password is unique, complex, and strong — ideal for today's security requirements.
+                    🔒
                 </p>
             </div>
         </div>
@@ -100,6 +104,19 @@
             const isDark = document.body.classList.contains("dark-mode");
             toggleBtn.textContent = isDark ? "☀️" : "🌙";
         });
+
+        document.getElementById('copy-btn').addEventListener('click', function () {
+            const passwordField = document.getElementById('password');
+            const password = passwordField.value;
+
+            navigator.clipboard.writeText(password).then(() => {
+                this.title = 'Copied!';
+                setTimeout(() => this.title = 'Copy Password', 2000);
+            }).catch(err => {
+                console.error('Failed to copy!', err);
+            });
+        });
+
     </script>
 
 </body>
