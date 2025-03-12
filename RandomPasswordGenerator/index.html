@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="main">
+        <div class="container">
+            <div class="generator">
+                <button id="theme-toggle" title="Toggle Dark Mode">🌙</button>
+
+                <div class="header">
+                    <h1>Password Generator</h1>
+                </div>
+
+                <!-- Password Display Section -->
+                <div class="password-display">
+                    <input type="text" id="password" disabled placeholder="Your password will appear here">
+                    <button id="copy-btn" title="Copy Password"><i class="fas fa-copy"></i></button>
+                </div>
+
+
+                <!-- Password Length Slider -->
+                <div class="settings">
+                    <label for="length">Password Length: <span id="length-value">16</span></label>
+                    <input type="range" id="length" min="6" max="64" value="16" oninput="updateLengthValue()">
+                </div>
+
+                <!-- Character Options -->
+                <div class="settings">
+                    <h3>Character Options</h3>
+                    <div id="labels">
+                        <label><input type="checkbox" id="uppercase"> A-Z</label>
+                        <label><input type="checkbox" id="lowercase" checked> a-z</label>
+                        <label><input type="checkbox" id="numbers"> 0-9</label>
+                        <label><input type="checkbox" id="special"> !@#$%^&*</label>
+                    </div>
+                </div>
+
+                <!-- Generate Button and Download -->
+                <div class="buttons">
+                    <button id="generate-btn" onclick="generatePassword()">Generate Password</button>
+                    <button id="download-btn" onclick="downloadPassword()">Download as .txt</button>
+                </div>
+            </div>
+
+            <!-- Explanation Box -->
+            <div class="how-it-works">
+                <h3>🔍 How is the Password Generated?</h3>
+                <p>
+                    I use a combination of your selected character options (uppercase, lowercase, numbers, and special characters) and generate a password based on your selected length.
+                </p>
+                <p>
+                    Rather than just picking random characters, the algorithm develops the seed number via a mathematical operation and assigns values to characters in a predictable yet controlled manner. This guarantees every password is unique, complex, and strong — ideal for today's security requirements. 🔒
+                </p>
+            </div>
+        </div>
+
+        <!-- Developer Information Section -->
+        <footer>
+            <p>Developed by <strong>Shivraj Anand</strong></p>
+            <p>Connect with me:</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/shivrajanand" target="_blank" title="linkedin"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://www.github.com/shivrajanand" target="_blank" title="github"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://x.com/shivrajanand_ai" target="_blank" title="x/twitter"><i
+                        class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/shivrajanandai/" target="_blank" title="instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.kaggle.com/shivrajanandai" target="_blank" title="kaggle"><i
+                        class="fab fa-kaggle"></i></a>
+                <a href="https://mailto:shivrajanand022002@gmail.com" target="_blank" class="fas fa-envelope"
+                    title="email"></a>
+                <a href="https://shivrajanand.github.io" target="_blank" class="fas fa-laptop-code"
+                    title="My Portfolio"></a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="logic.js"></script>
+
+    <script>
+        const toggleBtn = document.getElementById("theme-toggle");
+        toggleBtn.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+
+            // Optional: change button icon based on mode
+            const isDark = document.body.classList.contains("dark-mode");
+            toggleBtn.textContent = isDark ? "☀️" : "🌙";
+        });
+    </script>
+
+</body>
+
+</html>
